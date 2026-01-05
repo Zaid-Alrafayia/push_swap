@@ -6,7 +6,7 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:30:49 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/04 21:29:54 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/05 23:17:53 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -25,4 +25,9 @@ void	sb(t_list **b);
 void	ss(t_list **a, t_list **b);
 void	pa(t_list **a, t_list **b);
 void	pb(t_list **a, t_list **b);
+// more_swap_funct.c
+void	ra(t_list **a);
+void	rra(t_list **a);
+void	rrb(t_list **b);
+void	rrr(t_list **a, t_list **b);
 #endif // !PUSH_SWAP_H

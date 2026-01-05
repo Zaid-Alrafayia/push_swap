@@ -6,21 +6,13 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 12:19:03 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/04 21:50:39 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/05 22:07:18 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 #include <unistd.h>
-
-static void	print_content(void *content)
-{
-	int	*num;
-
-	num = (int *)content;
-	ft_printf("%d\n", *num);
-}
 
 void	sa(t_list **a)
 {
