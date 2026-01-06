@@ -6,14 +6,13 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 22:07:44 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/05 23:50:00 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/05 23:55:09 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft/libft.h"
 #include "push_swap.h"
 #include <unistd.h>
 
-void	print_content(void *content);
 void	ra(t_list **a)
 {
 	t_list	*head;
@@ -32,6 +31,12 @@ void	rb(t_list **b)
 	*b = (*b)->next;
 	head->next = NULL;
 	ft_lstadd_back(b, head);
+}
+
+void	rr(t_list **a, t_list **b)
+{
+	ra(a);
+	rb(b);
 }
 
 void	rra(t_list **a)

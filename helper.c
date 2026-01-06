@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/04 10:48:26 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/06 00:10:31 by zaalrafa         ###   ########.fr       */
+/*   Created: 2026/01/06 01:05:44 by zaalrafa          #+#    #+#             */
+/*   Updated: 2026/01/06 01:05:56 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft/libft.h"
 #include "push_swap.h"
 
-void	print_content(void *content)
+void	free_split(char **arr)
 {
-	int	*num;
+	int	i;
 
-	num = (int *)content;
-	ft_printf("%d\n", *num);
-}
-
-int	main(int argc, char *argv[])
-{
-	char	**numbers;
-	t_list	*a;
-
-	a = NULL;
-	init_stack(&a, argc, argv);
-	rra(&a);
-	ft_lstiter(a, print_content);
-	return (0);
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }

@@ -6,10 +6,9 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:33:43 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/04 12:14:55 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/06 11:33:07 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft/libft.h"
 #include "push_swap.h"
 #include <stdlib.h>
 
@@ -29,10 +28,14 @@ char	**check_args(int argc, char **argv)
 	{
 		while (numbers[i][j])
 		{
-			if (numbers[i][j] >= '0' && numbers[i][j] <= '9')
+			if ((numbers[i][j] >= '0' && numbers[i][j] <= '9')
+				|| numbers[i][j] == '-')
 				j++;
 			else
+			{
+				free_split(numbers);
 				errp();
+			}
 		}
 		i++;
 		j = 0;
@@ -40,33 +43,67 @@ char	**check_args(int argc, char **argv)
 	return (numbers);
 }
 
-t_list	*init_stack_a(char **numbers)
+void	overflow(char **numbers)
 {
-	t_list	*a;
+	int	len;
+
+	while (numbers)
+	{
+		len = ft_strlen(*numbers);
+		if (**numbers == '-')
+		{
+			if (len > 11)
+				free_error(numbers);
+			else if (len == 11 && ft_strncmp(*numbers + 1, "2147483648",
+					10) > 0)
+				free_error(numbers);
+		}
+		else
+		{
+			if (len > 10)
+				free_error(numbers);
+			else if (len == 10 && ft_strncmp(*numbers, "2147483647", 10) > 0)
+				free_error(numbers);
+		}
+		numbers++;
+	}
+}
+
+void	init_stack(t_list **a, int argc, char **argv)
+{
+	char	**numbers;
 	t_list	*tmp;
 	int		*num;
 
-	a = NULL;
+	numbers = check_args(argc, argv);
 	while (*numbers)
 	{
 		num = malloc(sizeof(int));
 		if (!num)
-			return (NULL);
+		{
+			free_error(numbers);
+		}
+		overflow(numbers);
 		*num = ft_atoi(*numbers);
 		tmp = ft_lstnew(num);
 		if (!tmp)
 		{
 			free(num);
-			return (NULL);
+			free_error(numbers);
 		}
-		ft_lstadd_back(&a, tmp);
+		ft_lstadd_back(a, tmp);
 		numbers++;
 	}
-	return (a);
+}
+
+void	free_error(char **numbers)
+{
+	free_split(numbers);
+	errp();
 }
 
 void	errp(void)
 {
-	ft_printf("ERROR");
+	write(2, "ERROR\n", 6);
 	exit(1);
 }
