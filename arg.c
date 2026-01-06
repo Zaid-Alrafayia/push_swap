@@ -6,104 +6,53 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:33:43 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/06 11:33:07 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/07 00:37:29 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft/libft.h"
 #include "push_swap.h"
-#include <stdlib.h>
 
-char	**check_args(int argc, char **argv)
+void	check_args(char **numbers, int argc)
 {
-	char	**numbers;
-	int		i;
-	int		j;
+	overflow(numbers, argc == 2);
+	check_repeat(numbers, argc == 2);
+}
 
-	j = 0;
+void	validate_chars(char **numbers, int split)
+{
+	int	i;
+	int	j;
+
 	i = 0;
-	if (argc == 2)
-		numbers = ft_split(argv[1], ' ');
-	else
-		numbers = argv + 1;
+	j = 0;
 	while (numbers[i])
 	{
 		while (numbers[i][j])
 		{
 			if ((numbers[i][j] >= '0' && numbers[i][j] <= '9')
-				|| numbers[i][j] == '-')
+				|| (numbers[i][j] == '-' && j == 0 && numbers[i][1]))
 				j++;
 			else
-			{
-				free_split(numbers);
-				errp();
-			}
+				split_error(numbers, split);
 		}
 		i++;
 		j = 0;
 	}
-	return (numbers);
 }
 
-void	overflow(char **numbers)
-{
-	int	len;
-
-	while (numbers)
-	{
-		len = ft_strlen(*numbers);
-		if (**numbers == '-')
-		{
-			if (len > 11)
-				free_error(numbers);
-			else if (len == 11 && ft_strncmp(*numbers + 1, "2147483648",
-					10) > 0)
-				free_error(numbers);
-		}
-		else
-		{
-			if (len > 10)
-				free_error(numbers);
-			else if (len == 10 && ft_strncmp(*numbers, "2147483647", 10) > 0)
-				free_error(numbers);
-		}
-		numbers++;
-	}
-}
-
-void	init_stack(t_list **a, int argc, char **argv)
+char	**split_args(int argc, char **argv)
 {
 	char	**numbers;
-	t_list	*tmp;
-	int		*num;
+	int		split;
 
-	numbers = check_args(argc, argv);
-	while (*numbers)
-	{
-		num = malloc(sizeof(int));
-		if (!num)
-		{
-			free_error(numbers);
-		}
-		overflow(numbers);
-		*num = ft_atoi(*numbers);
-		tmp = ft_lstnew(num);
-		if (!tmp)
-		{
-			free(num);
-			free_error(numbers);
-		}
-		ft_lstadd_back(a, tmp);
-		numbers++;
-	}
-}
-
-void	free_error(char **numbers)
-{
-	free_split(numbers);
-	errp();
-}
-
-void	errp(void)
-{
-	write(2, "ERROR\n", 6);
-	exit(1);
+	split = (argc == 2);
+	if (argc == 2)
+		numbers = ft_split(argv[1], ' ');
+	else
+		numbers = argv + 1;
+	if (!numbers[0])
+		split_error(numbers, split);
+	validate_chars(numbers, split);
+	check_args(numbers, argc);
+	return (numbers);
 }

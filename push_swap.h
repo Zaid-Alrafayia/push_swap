@@ -6,7 +6,7 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:30:49 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/06 11:31:10 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/07 00:36:54 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -15,12 +15,13 @@
 # include "libft/libft.h"
 
 // arg.c
-void	free_error(char **numbers);
-void	errp(void);
+char	**split_args(int argc, char **argv);
+void	check_repeat(char **numbers, int split);
+void	validate_chars(char **numbers, int split);
+// argc2.c
+void	add_to_stack(t_list **a, char **numbers, char **original, int split);
+void	overflow(char **num, int split);
 void	init_stack(t_list **a, int argc, char **argv);
-char	**check_args(int argc, char **argv);
-void	overflow(char **num);
-
 // push_swap_funct.c
 void	sa(t_list **a);
 void	sb(t_list **b);
@@ -37,4 +38,10 @@ void	rrr(t_list **a, t_list **b);
 
 // helper.c
 void	free_split(char **arr);
+
+// error.c
+void	split_error(char **numbers, int split);
+void	free_error(char **numbers);
+void	errp(void);
+
 #endif // !PUSH_SWAP_H
