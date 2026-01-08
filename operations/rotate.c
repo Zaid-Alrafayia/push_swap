@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   more_swap_funct.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/06 11:59:02 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/06 11:59:14 by zaalrafa         ###   ########.fr       */
+/*   Created: 2026/01/05 22:07:44 by zaalrafa          #+#    #+#             */
+/*   Updated: 2026/01/08 09:31:09 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
+#include <unistd.h>
 
-void	free_error(char **numbers)
+void	ra(t_list **a)
 {
-	free_split(numbers);
-	errp();
+	t_list	*head;
+
+	head = *a;
+	*a = (*a)->next;
+	head->next = NULL;
+	ft_lstadd_back(a, head);
 }
 
-void	split_error(char **numbers, int split)
+void	rb(t_list **b)
 {
-	if (split)
-		free_split(numbers);
-	errp();
+	t_list	*head;
+
+	head = *b;
+	*b = (*b)->next;
+	head->next = NULL;
+	ft_lstadd_back(b, head);
 }
 
-void	errp(void)
+void	rr(t_list **a, t_list **b)
 {
-	write(2, "ERROR\n", 6);
-	exit(1);
+	ra(a);
+	rb(b);
 }

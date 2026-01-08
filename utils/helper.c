@@ -6,10 +6,10 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 01:05:44 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/06 01:05:56 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/08 09:52:12 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	free_split(char **arr)
 {

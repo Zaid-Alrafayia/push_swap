@@ -6,10 +6,10 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 00:35:09 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/07 00:36:22 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/08 09:53:04 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	overflow(char **numbers, int split)
 {

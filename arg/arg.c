@@ -6,11 +6,10 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:33:43 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/07 00:37:29 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/08 09:52:55 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft/libft.h"
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	check_args(char **numbers, int argc)
 {

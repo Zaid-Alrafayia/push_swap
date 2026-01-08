@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/04 10:48:26 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/08 10:35:35 by zaalrafa         ###   ########.fr       */
+/*   Created: 2026/01/06 11:59:02 by zaalrafa          #+#    #+#             */
+/*   Updated: 2026/01/08 09:52:46 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../push_swap.h"
 
-#include "libft/libft.h"
-#include "push_swap.h"
-
-void	print_content(void *content)
+void	free_error(char **numbers)
 {
-	int	*num;
-
-	num = (int *)content;
-	ft_printf("%d\n", *num);
+	free_split(numbers);
+	errp();
 }
 
-int	main(int argc, char *argv[])
+void	split_error(char **numbers, int split)
 {
-	t_list	*a;
+	if (split)
+		free_split(numbers);
+	errp();
+}
 
-	a = NULL;
-	init_stack(&a, argc, argv);
-	size_sort(&a);
-	ft_lstiter(a, print_content);
-	return (0);
+void	errp(void)
+{
+	write(2, "ERROR\n", 6);
+	exit(1);
 }
