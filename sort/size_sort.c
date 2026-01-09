@@ -72,13 +72,13 @@ void	sort_5(t_list **stacka)
 
 	i = 0;
 	head = *stacka;
-	min = head->content;
+	min = *(int *)head->content;
 	index[0] = 0;
 	index[1] = 0;
-	min2 = head->next->content;
+	min2 = *(int *)head->next->content;
 	while (head != NULL)
 	{
-		x = head->content;
+		x = *(int *)head->content;
 		if (min > x)
 		{
 			min2 = min;
