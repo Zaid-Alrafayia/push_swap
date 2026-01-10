@@ -12,17 +12,19 @@
 #include "../push_swap.h"
 #include <unistd.h>
 
-void	size_sort(t_list **a)
+void	size_sort(t_list **a, t_list **b)
 {
 	int	n;
 
 	n = ft_lstsize(*a);
-	if (n == 2)
+	if (n == 1)
 		sort_1(a);
+	else if (n == 2)
+		sort_2(a);
 	else if (n == 3)
 		sort_3(a);
 	else if (n <= 5)
-		sort_5(a);
+		sort_5(a, b);
 	//	else
 	//		turk(a);
 }
@@ -31,6 +33,14 @@ void	sort_1(t_list **a)
 {
 	ft_lstclear(a, free);
 	exit(1);
+}
+
+void	sort_2(t_list **stacka)
+{
+	if ((*stacka)->content < (*stacka)->next->content)
+		ra(stacka);
+	else
+		exit(1);
 }
 
 void	sort_3(t_list **stacka)
@@ -61,39 +71,18 @@ void	sort_3(t_list **stacka)
 		rra(stacka);
 }
 
-void	sort_5(t_list **stacka)
+void	sort_5(t_list **stacka, t_list **stackb)
 {
-	t_list	*head;
-	int		min;
-	int		min2;
-	int		i;
-	int		index[2];
-	int		x;
+	int	min_vals[2];
+	int	min_idxs[2];
 
-	i = 0;
-	head = *stacka;
-	min = *(int *)head->content;
-	index[0] = 0;
-	index[1] = 0;
-	min2 = *(int *)head->next->content;
-	while (head != NULL)
-	{
-		x = *(int *)head->content;
-		if (min > x)
-		{
-			min2 = min;
-			index[1] = index[0];
-			min = x;
-			index[0] = i;
-		}
-		else if ((min < x) && (x < min2))
-		{
-			min2 = x;
-			index[1] = i;
-		}
-		head = head->next;
-		i++;
-	}
-	ft_printf("min:%d = index:%d\nmin2:%d = index:%d\n", min, index[0], min2,
-		index[1]);
+	find_two_smallest(*stacka, min_vals, min_idxs);
+	rotate_to_top(stacka, min_idxs[0]);
+	pb(stacka, stackb);
+	find_two_smallest(*stacka, min_vals, min_idxs);
+	rotate_to_top(stacka, min_idxs[0]);
+	pb(stacka, stackb);
+	sort_3(stacka);
+	pa(stacka, stackb);
+	pa(stacka, stackb);
 }

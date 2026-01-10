@@ -23,3 +23,22 @@ void	free_split(char **arr)
 	}
 	free(arr);
 }
+
+void	rotate_to_top(t_list **stack, int index)
+{
+	int	size;
+	int	rot;
+
+	size = ft_lstsize(*stack);
+	if (index <= size / 2)
+	{
+		while (index-- > 0)
+			ra(stack);
+	}
+	else
+	{
+		rot = size - index;
+		while (rot-- > 0)
+			rra(stack);
+	}
+}

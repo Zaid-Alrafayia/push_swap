@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "push_swap.h"
 
 void	print_content(void *content)
@@ -23,10 +24,12 @@ void	print_content(void *content)
 int	main(int argc, char *argv[])
 {
 	t_list	*a;
+	t_list	*b;
 
 	a = NULL;
+	b = NULL;
 	init_stack(&a, argc, argv);
-	size_sort(&a);
+	size_sort(&a, &b);
 	ft_lstiter(a, print_content);
 	return (0);
 }

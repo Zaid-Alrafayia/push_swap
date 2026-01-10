@@ -41,18 +41,19 @@ void	rrr(t_list **a, t_list **b);
 
 // helper.c
 void	free_split(char **arr);
-
+void	rotate_to_top(t_list **stack, int index);
 // error.c
 void	split_error(char **numbers, int split);
 void	free_error(char **numbers);
 void	errp(void);
 // a_is_sorted.c
 int		a_is_sorted(t_list **a);
-
+void	find_two_smallest(t_list *head, int mins[2], int idxs[2]);
 // size_sort.c
-void	size_sort(t_list **a);
+void	size_sort(t_list **a, t_list **b);
 void	sort_1(t_list **a);
+void	sort_2(t_list **stacka);
 void	sort_3(t_list **a);
-void	sort_5(t_list **stacka);
+void	sort_5(t_list **stacka, t_list **stackb);
 
 #endif // !PUSH_SWAP_H
