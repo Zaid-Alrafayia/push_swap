@@ -75,10 +75,15 @@ void	sort_5(t_list **stacka, t_list **stackb)
 {
 	int	min_vals[2];
 	int	min_idxs[2];
+	int	size;
 
-	find_two_smallest(*stacka, min_vals, min_idxs);
-	rotate_to_top(stacka, min_idxs[0]);
-	pb(stacka, stackb);
+	size = ft_lstsize(*stacka);
+	if (size == 5)
+	{
+		find_two_smallest(*stacka, min_vals, min_idxs);
+		rotate_to_top(stacka, min_idxs[0]);
+		pb(stacka, stackb);
+	}
 	find_two_smallest(*stacka, min_vals, min_idxs);
 	rotate_to_top(stacka, min_idxs[0]);
 	pb(stacka, stackb);
