@@ -6,7 +6,7 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:48:26 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/08 10:35:35 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:31:51 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,19 @@ int	main(int argc, char *argv[])
 {
 	t_list	*a;
 	t_list	*b;
+	int		i;
 
 	a = NULL;
 	b = NULL;
 	init_stack(&a, argc, argv);
 	size_sort(&a, &b);
-	ft_lstiter(a, print_content);
+	pb(&a, &b, 0);
+	pb(&a, &b, 0);
+	pb(&a, &b, 0);
+	pb(&a, &b, 0);
+	pb(&a, &b, 0);
+	i = find_pos_in_b(b, 7);
+	ft_printf("\nindex =%d\n", i);
+	ft_lstiter(b, print_content);
 	return (0);
 }
