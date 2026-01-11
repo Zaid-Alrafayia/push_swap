@@ -82,7 +82,7 @@ void	sort_5(t_list **stacka, t_list **stackb)
 	{
 		find_two_smallest(*stacka, min_vals, min_idxs);
 		rotate_to_top(stacka, min_idxs[0]);
-		pb(stacka, stackb);
+		pb(stacka, stackb, 1);
 	}
 	find_two_smallest(*stacka, min_vals, min_idxs);
 	rotate_to_top(stacka, min_idxs[0]);
