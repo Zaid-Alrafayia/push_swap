@@ -38,7 +38,7 @@ void	sort_1(t_list **a)
 void	sort_2(t_list **stacka)
 {
 	if ((*stacka)->content < (*stacka)->next->content)
-		ra(stacka);
+		ra(stacka, 1);
 	else
 		exit(1);
 }
@@ -54,21 +54,21 @@ void	sort_3(t_list **stacka)
 	c = (*stacka)->next->next->content;
 	if (*a > *b && *b > *c && *a > *c)
 	{
-		sa(stacka);
-		rra(stacka);
+		sa(stacka, 1);
+		rra(stacka, 1);
 	}
 	else if ((*a > *b) && (*b < *c) && (*a > *c))
-		ra(stacka);
+		ra(stacka, 1);
 	else if ((*a < *c) && (*a < *b) && (*c < *b))
 	{
-		ra(stacka);
-		sa(stacka);
-		rra(stacka);
+		ra(stacka, 1);
+		sa(stacka, 1);
+		rra(stacka, 1);
 	}
 	else if ((*a > *b) && (*b < *c) && (*a < *c))
-		sa(stacka);
+		sa(stacka, 1);
 	else if ((*a < *b) && (*b > *c) && (*a > *c))
-		rra(stacka);
+		rra(stacka, 1);
 }
 
 void	sort_5(t_list **stacka, t_list **stackb)
@@ -86,8 +86,8 @@ void	sort_5(t_list **stacka, t_list **stackb)
 	}
 	find_two_smallest(*stacka, min_vals, min_idxs);
 	rotate_to_top(stacka, min_idxs[0]);
-	pb(stacka, stackb);
+	pb(stacka, stackb, 1);
 	sort_3(stacka);
-	pa(stacka, stackb);
-	pa(stacka, stackb);
+	pa(stacka, stackb, 1);
+	pa(stacka, stackb, 1);
 }

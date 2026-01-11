@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../push_swap.h"
 
-void	rra(t_list **a)
+void	rra(t_list **a, int flag)
 {
 	t_list	*tmp;
 
@@ -23,9 +23,11 @@ void	rra(t_list **a)
 	tmp->next->next = *a;
 	*a = tmp->next;
 	tmp->next = NULL;
+	if (flag)
+		ft_printf("rra\n");
 }
 
-void	rrb(t_list **b)
+void	rrb(t_list **b, int flag)
 {
 	t_list	*tmp;
 
@@ -37,10 +39,14 @@ void	rrb(t_list **b)
 	tmp->next->next = *b;
 	*b = tmp->next;
 	tmp->next = NULL;
+	if (flag)
+		ft_printf("rrb\n");
 }
 
-void	rrr(t_list **a, t_list **b)
+void	rrr(t_list **a, t_list **b, int flag)
 {
-	rra(a);
-	rrb(b);
+	rra(a, 0);
+	rrb(b, 0);
+	if (flag)
+		ft_printf("rrr\n");
 }

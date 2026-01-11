@@ -13,7 +13,7 @@
 #include "../push_swap.h"
 #include <unistd.h>
 
-void	sa(t_list **a)
+void	sa(t_list **a, int flag)
 {
 	t_list	*first;
 	t_list	*second;
@@ -25,9 +25,11 @@ void	sa(t_list **a)
 	first->next = second->next;
 	second->next = first;
 	*a = second;
+	if (flag)
+		ft_printf("sa\n");
 }
 
-void	sb(t_list **b)
+void	sb(t_list **b, int flag)
 {
 	t_list	*first;
 	t_list	*second;
@@ -39,10 +41,14 @@ void	sb(t_list **b)
 	first->next = second->next;
 	second->next = first;
 	*b = second;
+	if (flag)
+		ft_printf("sb\n");
 }
 
-void	ss(t_list **a, t_list **b)
+void	ss(t_list **a, t_list **b, int flag)
 {
-	sa(a);
-	sb(b);
+	sa(a, 0);
+	sb(b, 0);
+	if (flag)
+		ft_printf("ss\n");
 }

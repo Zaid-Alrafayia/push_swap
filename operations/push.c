@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../push_swap.h"
 
-void	pa(t_list **a, t_list **b)
+void	pa(t_list **a, t_list **b, int flag)
 {
 	t_list	*tmp;
 
@@ -21,9 +21,11 @@ void	pa(t_list **a, t_list **b)
 	(*b)->next = *a;
 	*a = *b;
 	*b = tmp;
+	if (flag)
+		ft_printf("pa\n");
 }
 
-void	pb(t_list **a, t_list **b)
+void	pb(t_list **a, t_list **b, int flag)
 {
 	t_list	*head;
 
@@ -34,4 +36,6 @@ void	pb(t_list **a, t_list **b)
 	head->next = NULL;
 	head->next = *b;
 	*b = head;
+	if (flag)
+		ft_printf("pb\n");
 }

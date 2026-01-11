@@ -33,12 +33,12 @@ void	rotate_to_top(t_list **stack, int index)
 	if (index <= size / 2)
 	{
 		while (index-- > 0)
-			ra(stack);
+			ra(stack, 1);
 	}
 	else
 	{
 		rot = size - index;
 		while (rot-- > 0)
-			rra(stack);
+			rra(stack, 1);
 	}
 }
