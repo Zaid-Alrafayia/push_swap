@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
+#include <unistd.h>
 
 int	get_rotation(int len, int index)
 {
@@ -31,31 +32,47 @@ int	get_index(t_list *stack, int num)
 	return (i);
 }
 
-int	find_pos_in_b(t_list *stackb, int num)
+static int	next_cur(t_list *stackb, t_list *cur, t_list *next, int num)
 {
-	int		i;
-	t_list	*next;
-	t_list	*cur;
+	int	i[2];
 
-	i = 0;
-	cur = stackb;
+	i[1] = ft_lstsize(stackb);
+	i[0] = 0;
 	while (1)
 	{
 		if (cur->next)
 			next = cur->next;
 		else
 			next = stackb;
-		if ((*(int *)cur->content >= num) && (*(int *)next->content <= num))
-			return (i);
-		if (cur->content < next->content)
+		if (*(int *)cur->content >= num && *(int *)next->content <= num)
+			return (i[0] + 1 % i[1]);
+		if (*(int *)cur->content < *(int *)next->content)
 		{
 			if (num > *(int *)cur->content && num < *(int *)next->content)
-				return (i);
+				return (i[0] + 1 % i[1]);
 		}
-		cur = cur->next;
-		i++;
+		if (cur->next)
+			cur = cur->next;
+		else
+			cur = stackb;
+		i[0]++;
 		if (cur == stackb)
-			break ;
+			return (0);
 	}
-	return (0);
+}
+
+int	find_pos_in_b(t_list *stackb, int num)
+{
+	int		i;
+	t_list	*next;
+	t_list	*cur;
+
+	if (!stackb)
+		return (0);
+	next = NULL;
+	cur = stackb;
+	i = next_cur(stackb, cur, next, num);
+	if (!i)
+		return (0);
+	return (i);
 }
