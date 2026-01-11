@@ -31,11 +31,6 @@ int	main(int argc, char *argv[])
 	b = NULL;
 	init_stack(&a, argc, argv);
 	size_sort(&a, &b);
-	pb(&a, &b, 0);
-	pb(&a, &b, 0);
-	pb(&a, &b, 0);
-	pb(&a, &b, 0);
-	pb(&a, &b, 0);
 	i = find_pos_in_b(b, 7);
 	ft_printf("\nindex =%d\n", i);
 	ft_lstiter(b, print_content);

@@ -42,6 +42,8 @@ void	rrr(t_list **a, t_list **b, int flag);
 // helper.c
 void	free_split(char **arr);
 void	rotate_to_top(t_list **stack, int index);
+int		get_signed_rotations(int len, int idx);
+int		get_value_at_index(t_list *lst, int idx);
 // error.c
 void	split_error(char **numbers, int split);
 void	free_error(char **numbers);

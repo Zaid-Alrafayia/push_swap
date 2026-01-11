@@ -76,3 +76,21 @@ int	find_pos_in_b(t_list *stackb, int num)
 		return (0);
 	return (i);
 }
+
+void	turk(t_list **a, t_list **b)
+{
+	int	a_index;
+	int	b_index;
+	int	pos_a;
+	int	pos_b;
+
+	pb(a, b, 1);
+	pb(a, b, 1);
+	while (a)
+	{
+		a_index = get_index(*a, *(int *)(*a)->content);
+		b_index = get_index(*b, *(int *)(*b)->content);
+		pos_a = get_signed_rotations(ft_lstsize(*a), a_index);
+		pos_b = get_signed_rotations(ft_lstsize(*b), b_index);
+	}
+}
