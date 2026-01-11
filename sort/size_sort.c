@@ -25,8 +25,8 @@ void	size_sort(t_list **a, t_list **b)
 		sort_3(a);
 	else if (n <= 5)
 		sort_5(a, b);
-	//	else
-	//		turk(a);
+	else
+		turk(a, b);
 }
 
 void	sort_1(t_list **a)

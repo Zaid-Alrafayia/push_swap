@@ -92,5 +92,6 @@ void	turk(t_list **a, t_list **b)
 		b_index = get_index(*b, *(int *)(*b)->content);
 		pos_a = get_signed_rotations(ft_lstsize(*a), a_index);
 		pos_b = get_signed_rotations(ft_lstsize(*b), b_index);
+		if (pos_a >= 0 && pos_b >= 0)
 	}
 }

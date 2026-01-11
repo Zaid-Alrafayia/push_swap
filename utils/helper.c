@@ -42,3 +42,25 @@ void	rotate_to_top(t_list **stack, int index)
 			rra(stack, 1);
 	}
 }
+
+int	get_signed_rotations(int len, int idx)
+{
+	if (len == 0)
+		return (0);
+	if (idx <= len / 2)
+		return (idx);
+	return (idx - len);
+}
+
+int	get_value_at_index(t_list *lst, int idx)
+{
+	int	i;
+
+	i = 0;
+	while (lst && i < idx)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (*(int *)lst->content);
+}
