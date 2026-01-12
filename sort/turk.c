@@ -6,58 +6,51 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 14:16:01 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/12 03:30:48 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:42:35 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
 #include <limits.h>
 #include <unistd.h>
 
-static int	next_cur(t_list *stackb, t_list *cur, t_list *next, int num)
+static int	find_pos_loop(t_list *b, int nbr, int len)
 {
-	int	i[2];
+	t_list	*cur;
+	t_list	*next;
+	int		idx;
 
-	i[1] = ft_lstsize(stackb);
-	i[0] = 0;
+	cur = b;
+	idx = 0;
 	while (1)
 	{
 		if (cur->next)
 			next = cur->next;
 		else
-			next = stackb;
-		if (*(int *)cur->content >= num && *(int *)next->content <= num)
-			return (i[0] + 1 % i[1]);
+			next = b;
+		if (*(int *)cur->content >= nbr && nbr >= *(int *)next->content)
+			return ((idx + 1) % len);
 		if (*(int *)cur->content < *(int *)next->content)
 		{
-			if (num > *(int *)cur->content && num < *(int *)next->content)
-				return (i[0] + 1 % i[1]);
+			if (nbr > *(int *)cur->content || nbr < *(int *)next->content)
+				return ((idx + 1) % len);
 		}
 		if (cur->next)
 			cur = cur->next;
 		else
-			cur = stackb;
-		i[0]++;
-		if (cur == stackb)
-			return (0);
+			cur = b;
+		idx++;
+		if (cur == b)
+			break ;
 	}
+	return (0);
 }
 
-int	find_pos_in_b(t_list *stackb, int num)
+int	find_pos_in_b(t_list *b, int nbr)
 {
-	int		i;
-	t_list	*next;
-	t_list	*cur;
-
-	if (!stackb)
+	if (!b)
 		return (0);
-	next = NULL;
-	cur = stackb;
-	i = next_cur(stackb, cur, next, num);
-	if (!i)
-		return (0);
-	return (i);
+	return (find_pos_loop(b, nbr, ft_lstsize(b)));
 }
-
 static void	init_move(t_move **out_move)
 {
 	(*out_move)->cost = INT_MAX;

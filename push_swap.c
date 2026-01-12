@@ -6,7 +6,7 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:48:26 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/12 01:34:17 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:41:18 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int argc, char *argv[])
 	b = NULL;
 	init_stack(&a, argc, argv);
 	size_sort(&a, &b);
-	ft_lstiter(b, print_content);
+	ft_lstiter(a, print_content);
+	ft_lstclear(&a, free);
 	return (0);
 }

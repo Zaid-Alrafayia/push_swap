@@ -31,46 +31,56 @@ void	size_sort(t_list **a, t_list **b)
 
 void	sort_1(t_list **a)
 {
-	ft_lstclear(a, free);
-	exit(1);
+	(void)a;
+	return ;
 }
 
+/* two elements: swap if out of order */
 void	sort_2(t_list **stacka)
 {
-	if ((*stacka)->content < (*stacka)->next->content)
-		ra(stacka, 1);
-	else
-		exit(1);
+	int	*first;
+	int	*second;
+
+	if (!stacka || !*stacka || !(*stacka)->next)
+		return ;
+	first = (int *)(*stacka)->content;
+	second = (int *)(*stacka)->next->content;
+	if (*first > *second)
+		sa(stacka, 1);
 }
 
+/* three elements: ensure we do nothing when already sorted */
 void	sort_3(t_list **stacka)
 {
 	int	*a;
 	int	*b;
 	int	*c;
 
-	a = (*stacka)->content;
-	b = (*stacka)->next->content;
-	c = (*stacka)->next->next->content;
-	if (*a > *b && *b > *c && *a > *c)
+	if (!stacka || !*stacka || !(*stacka)->next || !(*stacka)->next->next)
+		return ;
+	a = (int *)(*stacka)->content;
+	b = (int *)(*stacka)->next->content;
+	c = (int *)(*stacka)->next->next->content;
+	if (*a < *b && *b < *c)
+		return ;
+	if (*a > *b && *b > *c)
 	{
 		sa(stacka, 1);
 		rra(stacka, 1);
 	}
 	else if ((*a > *b) && (*b < *c) && (*a > *c))
 		ra(stacka, 1);
-	else if ((*a < *c) && (*a < *b) && (*c < *b))
+	else if (*a < *c && *a < *b && *c < *b)
 	{
 		ra(stacka, 1);
 		sa(stacka, 1);
 		rra(stacka, 1);
 	}
-	else if ((*a > *b) && (*b < *c) && (*a < *c))
+	else if (*a > *b && *b < *c && *a < *c)
 		sa(stacka, 1);
 	else if ((*a < *b) && (*b > *c) && (*a > *c))
 		rra(stacka, 1);
 }
-
 void	sort_5(t_list **stacka, t_list **stackb)
 {
 	int	min_vals[2];
