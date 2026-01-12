@@ -6,7 +6,7 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:30:49 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/11 14:57:40 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:17:12 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -14,6 +14,14 @@
 
 # include "libft/libft.h"
 
+typedef struct s_move
+{
+	int	pos_a;
+	int	pos_b;
+	int	index;
+	int	value;
+	int	cost;
+}		t_move;
 // arg.c
 char	**split_args(int argc, char **argv);
 void	check_repeat(char **numbers, int split);
@@ -58,6 +66,7 @@ void	sort_2(t_list **stacka);
 void	sort_3(t_list **a);
 void	sort_5(t_list **stacka, t_list **stackb);
 // turk.c
+void	turk(t_list **a, t_list **b);
 int		find_pos_in_b(t_list *stackb, int num);
 int		get_index(t_list *stack, int num);
 int		get_rotation(int len, int index);

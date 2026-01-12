@@ -9,7 +9,7 @@ LIBFT       = $(LIBFT_DIR)/libft.a
 
 SRCS        = sort/size_sort.c operations/swap.c operations/push.c operations/rotate.c \
 							operations/rrotate.c arg/arg.c arg/arg2.c utils/errors.c utils/helper.c \
-							utils/a_is_sorted.c	push_swap.c sort/turk.c
+							utils/a_is_sorted.c	push_swap.c sort/turk.c utils/turk_helper.c
 SRCS_BONUS  = 
 
 OBJS        = $(SRCS:.c=.o)

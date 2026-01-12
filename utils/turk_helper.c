@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   turk_helper.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/04 10:48:26 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/12 01:34:17 by zaalrafa         ###   ########.fr       */
+/*   Created: 2026/01/12 03:19:01 by zaalrafa          #+#    #+#             */
+/*   Updated: 2026/01/12 03:19:16 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../push_swap.h"
 
-#include "libft/libft.h"
-#include "push_swap.h"
-
-void	print_content(void *content)
+int	get_rotation(int len, int index)
 {
-	int	*num;
-
-	num = (int *)content;
-	ft_printf("%d\n", *num);
+	if (index <= len / 2)
+		return (index);
+	else
+		return (index - len);
 }
 
-int	main(int argc, char *argv[])
+int	get_index(t_list *stack, int num)
 {
-	t_list	*a;
-	t_list	*b;
+	int	i;
 
-	a = NULL;
-	b = NULL;
-	init_stack(&a, argc, argv);
-	size_sort(&a, &b);
-	ft_lstiter(b, print_content);
-	return (0);
+	i = 0;
+	while (*(int *)stack->content != num)
+	{
+		i++;
+	}
+	return (i);
 }
