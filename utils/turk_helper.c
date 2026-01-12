@@ -26,6 +26,7 @@ int	get_index(t_list *stack, int num)
 	i = 0;
 	while (*(int *)stack->content != num)
 	{
+		stack = stack->next;
 		i++;
 	}
 	return (i);

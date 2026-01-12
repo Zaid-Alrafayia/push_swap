@@ -6,7 +6,7 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:30:49 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/12 03:17:12 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:42:07 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -70,4 +70,6 @@ void	turk(t_list **a, t_list **b);
 int		find_pos_in_b(t_list *stackb, int num);
 int		get_index(t_list *stack, int num);
 int		get_rotation(int len, int index);
+
+void	print_content(void *content);
 #endif // !PUSH_SWAP_H
