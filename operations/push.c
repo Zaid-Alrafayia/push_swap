@@ -11,31 +11,40 @@
 /* ************************************************************************** */
 #include "../push_swap.h"
 
-void	pa(t_list **a, t_list **b, int flag)
+void	pa(t_stack **a, t_stack **b, int flag)
 {
-	t_list	*tmp;
+	t_stack	*node;
 
 	if (*b == NULL)
 		return ;
-	tmp = (*b)->next;
-	(*b)->next = *a;
-	*a = *b;
-	*b = tmp;
+	node = *b;
+	*b = node->next;
+	if (*b)
+		(*b)->prev = NULL;
+	node->next = *a;
+	if (*a)
+		(*a)->prev = node;
+	node->prev = NULL;
+	*a = node;
 	if (flag)
 		ft_printf("pa\n");
 }
 
-void	pb(t_list **a, t_list **b, int flag)
+void	pb(t_stack **a, t_stack **b, int flag)
 {
-	t_list	*head;
+	t_stack	*node;
 
 	if (*a == NULL)
 		return ;
-	head = *a;
-	*a = (*a)->next;
-	head->next = NULL;
-	head->next = *b;
-	*b = head;
+	node = *a;
+	*a = node->next;
+	if (*a)
+		(*a)->prev = NULL;
+	node->next = *b;
+	if (*b)
+		(*b)->prev = node;
+	node->prev = NULL;
+	*b = node;
 	if (flag)
 		ft_printf("pb\n");
 }

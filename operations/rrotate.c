@@ -11,39 +11,45 @@
 /* ************************************************************************** */
 #include "../push_swap.h"
 
-void	rra(t_list **a, int flag)
+void	rra(t_stack **a, int flag)
 {
-	t_list	*tmp;
+	t_stack	*tail;
 
 	if (!a || !*a || (*a)->next == NULL)
 		return ;
-	tmp = *a;
-	while (tmp->next->next != NULL)
-		tmp = tmp->next;
-	tmp->next->next = *a;
-	*a = tmp->next;
-	tmp->next = NULL;
+	tail = *a;
+	while (tail->next)
+		tail = tail->next;
+	if (tail->prev)
+		tail->prev->next = NULL;
+	tail->prev = NULL;
+	tail->next = *a;
+	(*a)->prev = tail;
+	*a = tail;
 	if (flag)
 		ft_printf("rra\n");
 }
 
-void	rrb(t_list **b, int flag)
+void	rrb(t_stack **b, int flag)
 {
-	t_list	*tmp;
+	t_stack	*tail;
 
 	if (!b || !*b || (*b)->next == NULL)
 		return ;
-	tmp = *b;
-	while (tmp->next->next != NULL)
-		tmp = tmp->next;
-	tmp->next->next = *b;
-	*b = tmp->next;
-	tmp->next = NULL;
+	tail = *b;
+	while (tail->next)
+		tail = tail->next;
+	if (tail->prev)
+		tail->prev->next = NULL;
+	tail->prev = NULL;
+	tail->next = *b;
+	(*b)->prev = tail;
+	*b = tail;
 	if (flag)
 		ft_printf("rrb\n");
 }
 
-void	rrr(t_list **a, t_list **b, int flag)
+void	rrr(t_stack **a, t_stack **b, int flag)
 {
 	rra(a, 0);
 	rrb(b, 0);

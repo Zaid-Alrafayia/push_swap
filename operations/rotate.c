@@ -12,31 +12,39 @@
 #include "../push_swap.h"
 #include <unistd.h>
 
-void	ra(t_list **a, int flag)
+void	ra(t_stack **a, int flag)
 {
-	t_list	*head;
+	t_stack	*head;
 
+	if (!a || !*a || !(*a)->next)
+		return ;
 	head = *a;
-	*a = (*a)->next;
+	*a = head->next;
+	(*a)->prev = NULL;
 	head->next = NULL;
-	ft_lstadd_back(a, head);
+	head->prev = NULL;
+	stack_add_back(a, head);
 	if (flag)
 		ft_printf("ra\n");
 }
 
-void	rb(t_list **b, int flag)
+void	rb(t_stack **b, int flag)
 {
-	t_list	*head;
+	t_stack	*head;
 
+	if (!b || !*b || !(*b)->next)
+		return ;
 	head = *b;
-	*b = (*b)->next;
+	*b = head->next;
+	(*b)->prev = NULL;
 	head->next = NULL;
-	ft_lstadd_back(b, head);
+	head->prev = NULL;
+	stack_add_back(b, head);
 	if (flag)
 		ft_printf("rb\n");
 }
 
-void	rr(t_list **a, t_list **b, int flag)
+void	rr(t_stack **a, t_stack **b, int flag)
 {
 	ra(a, 0);
 	rb(b, 0);

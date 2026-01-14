@@ -6,98 +6,62 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 10:03:50 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/08 12:14:19 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/14 03:37:41 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
 #include <unistd.h>
 
-void	size_sort(t_list **a, t_list **b)
+void	size_sort(t_stack **a, t_stack **b)
 {
 	int	n;
 
-	n = ft_lstsize(*a);
+	n = stack_len(*a);
 	if (n == 1)
 		sort_1(a);
 	else if (n == 2)
 		sort_2(a);
 	else if (n == 3)
 		sort_3(a);
-	else if (n <= 5)
-		sort_5(a, b);
 	else
-		turk(a, b);
+		sort_stack(a, b);
 }
 
-void	sort_1(t_list **a)
+void	sort_1(t_stack **a)
 {
 	(void)a;
 	return ;
 }
 
 /* two elements: swap if out of order */
-void	sort_2(t_list **stacka)
+void	sort_2(t_stack **stacka)
 {
-	int	*first;
-	int	*second;
-
 	if (!stacka || !*stacka || !(*stacka)->next)
 		return ;
-	first = (int *)(*stacka)->content;
-	second = (int *)(*stacka)->next->content;
-	if (*first > *second)
+	if ((*stacka)->nbr > (*stacka)->next->nbr)
 		sa(stacka, 1);
 }
 
-/* three elements: ensure we do nothing when already sorted */
-void	sort_3(t_list **stacka)
+void	sort_3(t_stack **a)
 {
-	int	*a;
-	int	*b;
-	int	*c;
+	t_stack	*biggest;
 
-	if (!stacka || !*stacka || !(*stacka)->next || !(*stacka)->next->next)
-		return ;
-	a = (int *)(*stacka)->content;
-	b = (int *)(*stacka)->next->content;
-	c = (int *)(*stacka)->next->next->content;
-	if (*a < *b && *b < *c)
-		return ;
-	if (*a > *b && *b > *c)
-	{
-		sa(stacka, 1);
-		rra(stacka, 1);
-	}
-	else if ((*a > *b) && (*b < *c) && (*a > *c))
-		ra(stacka, 1);
-	else if (*a < *c && *a < *b && *c < *b)
-	{
-		ra(stacka, 1);
-		sa(stacka, 1);
-		rra(stacka, 1);
-	}
-	else if (*a > *b && *b < *c && *a < *c)
-		sa(stacka, 1);
-	else if ((*a < *b) && (*b > *c) && (*a > *c))
-		rra(stacka, 1);
+	biggest = find_max(*a);
+	if (biggest == *a)
+		ra(a, false);
+	else if ((*a)->next == biggest)
+		rra(a, false);
+	if ((*a)->nbr > (*a)->next->nbr)
+		sa(a, false);
 }
-void	sort_5(t_list **stacka, t_list **stackb)
-{
-	int	min_vals[2];
-	int	min_idxs[2];
-	int	size;
 
-	size = ft_lstsize(*stacka);
-	if (size == 5)
-	{
-		find_two_smallest(*stacka, min_vals, min_idxs);
-		rotate_to_top(stacka, min_idxs[0]);
-		pb(stacka, stackb, 1);
-	}
-	find_two_smallest(*stacka, min_vals, min_idxs);
-	rotate_to_top(stacka, min_idxs[0]);
-	pb(stacka, stackb, 1);
-	sort_3(stacka);
-	pa(stacka, stackb, 1);
-	pa(stacka, stackb, 1);
+void	sort_stack(t_stack **a, t_stack **b)
+{
+	int	len_a;
+
+	len_a = stack_len(*a);
+	if (len_a > 3 && !stack_sorted(*a))
+		pb(a, b, 1);
+	if (len_a > 3 && !stack_sorted(*a))
+		pb(a, b, 1);
 }

@@ -13,39 +13,49 @@
 #include "../push_swap.h"
 #include <unistd.h>
 
-void	sa(t_list **a, int flag)
+void	sa(t_stack **a, int flag)
 {
-	t_list	*first;
-	t_list	*second;
+	t_stack	*first;
+	t_stack	*second;
+	int		tmp_nbr;
+	int		tmp_index;
 
-	if (*a == NULL || (*a)->next == NULL)
+	if (!a || !*a || !(*a)->next)
 		return ;
 	first = *a;
-	second = (*a)->next;
-	first->next = second->next;
-	second->next = first;
-	*a = second;
+	second = first->next;
+	tmp_nbr = first->nbr;
+	tmp_index = first->index;
+	first->nbr = second->nbr;
+	first->index = second->index;
+	second->nbr = tmp_nbr;
+	second->index = tmp_index;
 	if (flag)
 		ft_printf("sa\n");
 }
 
-void	sb(t_list **b, int flag)
+void	sb(t_stack **b, int flag)
 {
-	t_list	*first;
-	t_list	*second;
+	t_stack	*first;
+	t_stack	*second;
+	int		tmp_nbr;
+	int		tmp_index;
 
-	if (*b == NULL || (*b)->next == NULL)
+	if (!b || !*b || !(*b)->next)
 		return ;
 	first = *b;
-	second = (*b)->next;
-	first->next = second->next;
-	second->next = first;
-	*b = second;
+	second = first->next;
+	tmp_nbr = first->nbr;
+	tmp_index = first->index;
+	first->nbr = second->nbr;
+	first->index = second->index;
+	second->nbr = tmp_nbr;
+	second->index = tmp_index;
 	if (flag)
 		ft_printf("sb\n");
 }
 
-void	ss(t_list **a, t_list **b, int flag)
+void	ss(t_stack **a, t_stack **b, int flag)
 {
 	sa(a, 0);
 	sb(b, 0);

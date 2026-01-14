@@ -58,29 +58,22 @@ void	check_repeat(char **numbers, int split)
 	}
 }
 
-void	add_to_stack(t_list **a, char **numbers, char **original, int split)
+void	add_to_stack(t_stack **a, char **numbers, char **original, int split)
 {
-	t_list	*tmp;
-	int		*num;
+	t_stack	*tmp;
+	int		n;
 
-	num = malloc(sizeof(int));
-	if (!num)
-	{
-		ft_lstclear(a, free);
-		split_error(original, split);
-	}
-	*num = ft_atoi(*numbers);
-	tmp = ft_lstnew(num);
+	n = ft_atoi(*numbers);
+	tmp = stack_new(n);
 	if (!tmp)
 	{
-		free(num);
-		ft_lstclear(a, free);
+		stack_clear(a);
 		split_error(original, split);
 	}
-	ft_lstadd_back(a, tmp);
+	stack_add_back(a, tmp);
 }
 
-void	init_stack(t_list **a, int argc, char **argv)
+void	init_stack(t_stack **a, int argc, char **argv)
 {
 	char	**numbers;
 	char	**original;

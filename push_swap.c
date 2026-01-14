@@ -23,14 +23,14 @@ void	print_content(void *content)
 
 int	main(int argc, char *argv[])
 {
-	t_list	*a;
-	t_list	*b;
+	t_stack	*a;
+	t_stack	*b;
 
 	a = NULL;
 	b = NULL;
 	init_stack(&a, argc, argv);
 	size_sort(&a, &b);
-	ft_lstiter(a, print_content);
-	ft_lstclear(&a, free);
+	// ft_lstiter(a, print_content);
+	stack_clear(&a);
 	return (0);
 }
