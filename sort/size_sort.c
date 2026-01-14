@@ -60,8 +60,12 @@ void	sort_stack(t_stack **a, t_stack **b)
 	int	len_a;
 
 	len_a = stack_len(*a);
-	if (len_a > 3 && !stack_sorted(*a))
+	if (len_a-- > 3 && !stack_sorted(*a))
 		pb(a, b, 1);
-	if (len_a > 3 && !stack_sorted(*a))
+	if (len_a-- > 3 && !stack_sorted(*a))
 		pb(a, b, 1);
+	while (!stack_sorted(*a) && len_a-- > 3)
+	{
+		init_nodes_a(*a, *b);
+	}
 }
