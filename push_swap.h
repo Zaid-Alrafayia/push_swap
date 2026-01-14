@@ -6,7 +6,7 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:30:49 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/14 04:18:17 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/14 19:03:36 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -89,6 +89,8 @@ t_stack				*find_max(t_stack *stack);
 void				current_index(t_stack *s);
 void				init_nodes_a(t_stack *a, t_stack *b);
 void				set_cheapest(t_stack *stack);
+// move.c
+t_stack				*get_cheapest(t_stack *stack);
 
 void				print_content(void *content);
 #endif // !PUSH_SWAP_H
