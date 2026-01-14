@@ -6,7 +6,7 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 17:55:35 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/14 19:29:10 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/14 20:31:51 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
@@ -39,5 +39,8 @@ void	min_to_top(t_stack **a)
 
 void	move_a_to_b(t_stack **a, t_stack **b)
 {
-	t_stack
+	t_stack	*cheapest_node;
+
+	cheapest_node = get_cheapest(*a);
+	if (cheapest_node->above_median && cheapest_node->target_node->above_median)
 }

@@ -6,7 +6,7 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 10:03:50 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/14 03:37:41 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/14 20:31:53 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
@@ -67,5 +67,14 @@ void	sort_stack(t_stack **a, t_stack **b)
 	while (!stack_sorted(*a) && len_a-- > 3)
 	{
 		init_nodes_a(*a, *b);
+		move_a_to_b(a, b);
 	}
+	sort_3(a);
+	while (*b)
+	{
+		init_nodes_b(*a, *b);
+		move_b_to_a(a, b);
+	}
+	current_index(*a);
+	min_on_top(a);
 }
