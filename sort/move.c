@@ -6,14 +6,14 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 17:55:35 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/15 11:07:48 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/15 23:30:56 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
 
 static void	rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node)
 {
-	while (*a != cheapest_node && *b != cheapest_node)
+	while (*a != cheapest_node && *b != cheapest_node->target_node)
 		rr(a, b, 1);
 	current_index(*a);
 	current_index(*b);
@@ -21,7 +21,7 @@ static void	rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node)
 
 static void	rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node)
 {
-	while (*a != cheapest_node && *b != cheapest_node)
+	while (*a != cheapest_node && *b != cheapest_node->target_node)
 		rrr(a, b, 1);
 	current_index(*a);
 	current_index(*b);
