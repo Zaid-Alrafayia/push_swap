@@ -29,7 +29,9 @@ static void	rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node)
 
 void	prep_for_push(t_stack **stack, t_stack *node, int flag)
 {
-	while (*stack)
+	if (!stack || !*stack || !node)
+		return ;
+	while (*stack != node)
 	{
 		if (flag)
 		{
@@ -45,7 +47,6 @@ void	prep_for_push(t_stack **stack, t_stack *node, int flag)
 			else
 				rrb(stack, 1);
 		}
-		*stack = (*stack)->next;
 	}
 }
 
@@ -67,5 +68,9 @@ void	move_a_to_b(t_stack **a, t_stack **b)
 void	move_b_to_a(t_stack **a, t_stack **b)
 {
 	prep_for_push(a, (*b)->target_node, 1);
+	ft_printf("stack a ==");
+	print_stack(*a);
+	ft_printf("stack b ==");
+	print_stack(*b);
 	pa(a, b, 1);
 }

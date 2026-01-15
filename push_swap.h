@@ -96,7 +96,7 @@ void				prep_for_push(t_stack **stack, t_stack *node, int flag);
 // functions.c
 t_stack				*get_cheapest(t_stack *stack);
 void				min_to_top(t_stack **a);
-void				print_content(void *content);
+void				print_stack(t_stack *stack);
 
 // init_b.c
 void				init_nodes_b(t_stack *a, t_stack *b);

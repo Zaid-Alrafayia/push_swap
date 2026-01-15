@@ -14,21 +14,20 @@
 
 void	current_index(t_stack *stack)
 {
-	int	i;
-	int	median;
+	t_stack	*cur;
+	int		i;
+	int		median;
 
+	cur = stack;
 	i = 0;
-	if (!stack)
+	if (!cur)
 		return ;
-	median = stack_len(stack) / 2;
-	while (stack)
+	median = stack_len(cur) / 2;
+	while (cur)
 	{
-		stack->index = i;
-		if (i <= median)
-			stack->above_median = true;
-		else
-			stack->above_median = false;
-		stack = stack->next;
+		cur->index = i;
+		cur->above_median = (i <= median);
+		cur = cur->next;
 		++i;
 	}
 }
@@ -37,15 +36,18 @@ static void	set_target_a(t_stack *a, t_stack *b)
 {
 	t_stack	*current_b;
 	t_stack	*target_node;
+	t_stack	*current_a;
 	long	best_match_index;
 
-	while (a)
+	current_a = a;
+	while (current_a)
 	{
 		best_match_index = LONG_MIN;
 		current_b = b;
 		while (current_b)
 		{
-			if (current_b->nbr < a->nbr && current_b->nbr > best_match_index)
+			if (current_b->nbr < current_a->nbr
+				&& current_b->nbr > best_match_index)
 			{
 				best_match_index = current_b->nbr;
 				target_node = current_b;
@@ -53,30 +55,32 @@ static void	set_target_a(t_stack *a, t_stack *b)
 			current_b = current_b->next;
 		}
 		if (best_match_index == LONG_MIN)
-			a->target_node = find_max(b);
+			current_a->target_node = find_max(b);
 		else
-			a->target_node = target_node;
-		a = a->next;
+			current_a->target_node = target_node;
+		current_a = current_a->next;
 	}
 }
 
 static void	cost_analysis_a(t_stack *a, t_stack *b)
 {
-	int	len_a;
-	int	len_b;
+	int		len_a;
+	int		len_b;
+	t_stack	*current_a;
 
-	len_a = stack_len(a);
+	current_a = a;
+	len_a = stack_len(current_a);
 	len_b = stack_len(b);
-	while (a)
+	while (current_a)
 	{
-		a->push_cost = a->index;
-		if (!(a->above_median))
-			a->push_cost = len_a - (a->index);
-		if (a->target_node->above_median)
-			a->push_cost += a->target_node->index;
+		current_a->push_cost = current_a->index;
+		if (!(current_a->above_median))
+			current_a->push_cost = len_a - (current_a->index);
+		if (current_a->target_node->above_median)
+			current_a->push_cost += current_a->target_node->index;
 		else
-			a->push_cost += len_b - (a->target_node->index);
-		a = a->next;
+			current_a->push_cost += len_b - (current_a->target_node->index);
+		current_a = current_a->next;
 	}
 }
 

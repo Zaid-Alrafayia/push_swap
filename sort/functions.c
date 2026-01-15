@@ -40,10 +40,17 @@ void	min_to_top(t_stack **a)
 	}
 }
 
-void	print_content(void *content)
+void	print_stack(t_stack *stack)
 {
-	int	*num;
+	t_stack	*start;
 
-	num = (int *)content;
-	ft_printf("%d\n", *num);
+	start = stack;
+	if (!stack)
+		ft_printf("NULL\n");
+	while (start)
+	{
+		ft_printf("%d\t", start->nbr);
+		start = start->next;
+	}
+	ft_printf("\n");
 }

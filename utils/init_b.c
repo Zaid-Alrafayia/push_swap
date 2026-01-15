@@ -15,15 +15,18 @@ static void	set_target_b(t_stack *a, t_stack *b)
 {
 	t_stack	*current_a;
 	t_stack	*target_node;
+	t_stack	*current_b;
 	long	best_match_index;
 
-	while (b)
+	current_b = b;
+	while (current_b)
 	{
 		best_match_index = LONG_MAX;
 		current_a = a;
 		while (current_a)
 		{
-			if (current_a->nbr > b->nbr && current_a->nbr < best_match_index)
+			if (current_a->nbr > current_b->nbr
+				&& current_a->nbr < best_match_index)
 			{
 				best_match_index = current_a->nbr;
 				target_node = current_a;
@@ -31,10 +34,10 @@ static void	set_target_b(t_stack *a, t_stack *b)
 			current_a = current_a->next;
 		}
 		if (best_match_index == LONG_MAX)
-			b->target_node = find_min(a);
+			current_b->target_node = find_min(a);
 		else
-			b->target_node = target_node;
-		b = b->next;
+			current_b->target_node = target_node;
+		current_b = current_b->next;
 	}
 }
 
