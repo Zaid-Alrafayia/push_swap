@@ -14,32 +14,7 @@
 
 void	size_sort(t_stack **a, t_stack **b)
 {
-	int	n;
-
-	n = stack_len(*a);
-	if (n == 1)
-		sort_1(a);
-	else if (n == 2)
-		sort_2(a);
-	else if (n == 3)
-		sort_3(a);
-	else
-		sort_stack(a, b);
-}
-
-void	sort_1(t_stack **a)
-{
-	(void)a;
-	return ;
-}
-
-/* two elements: swap if out of order */
-void	sort_2(t_stack **stacka)
-{
-	if (!stacka || !*stacka || !(*stacka)->next)
-		return ;
-	if ((*stacka)->nbr > (*stacka)->next->nbr)
-		sa(stacka, 1);
+	sort_stack(a, b);
 }
 
 void	sort_3(t_stack **a)

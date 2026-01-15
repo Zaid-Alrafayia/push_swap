@@ -6,17 +6,17 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 10:55:22 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/15 11:14:50 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/15 23:20:53 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
+#include <limits.h>
 
-static void	set_target_b(t_stack *a, t_stack *b)
+static void	set_target_b(t_stack *a, t_stack *b, long best_match_index)
 {
 	t_stack	*current_a;
 	t_stack	*target_node;
 	t_stack	*current_b;
-	long	best_match_index;
 
 	current_b = b;
 	while (current_b)
@@ -43,7 +43,10 @@ static void	set_target_b(t_stack *a, t_stack *b)
 
 void	init_nodes_b(t_stack *a, t_stack *b)
 {
+	long	best_match_index;
+
+	best_match_index = LONG_MAX;
 	current_index(a);
 	current_index(b);
-	set_target_b(a, b);
+	set_target_b(a, b, best_match_index);
 }

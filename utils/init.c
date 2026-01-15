@@ -6,7 +6,7 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 04:02:54 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/14 04:18:39 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/15 23:18:20 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
@@ -32,55 +32,32 @@ void	current_index(t_stack *stack)
 	}
 }
 
-static void	set_target_a(t_stack *a, t_stack *b)
+static void	set_target_a(t_stack *a, t_stack *b, long best_val)
 {
-	t_stack	*current_b;
-	t_stack	*target_node;
-	t_stack	*current_a;
-	long	best_match_index;
+	t_stack	*cur_a;
+	t_stack	*cur_b;
+	t_stack	*best;
 
-	current_a = a;
-	while (current_a)
+	cur_a = a;
+	while (cur_a)
 	{
-		best_match_index = LONG_MIN;
-		current_b = b;
-		while (current_b)
+		best = NULL;
+		best_val = LONG_MIN;
+		cur_b = b;
+		while (cur_b)
 		{
-			if (current_b->nbr < current_a->nbr
-				&& current_b->nbr > best_match_index)
+			if (cur_b->nbr < cur_a->nbr && cur_b->nbr > best_val)
 			{
-				best_match_index = current_b->nbr;
-				target_node = current_b;
+				best_val = cur_b->nbr;
+				best = cur_b;
 			}
-			current_b = current_b->next;
+			cur_b = cur_b->next;
 		}
-		if (best_match_index == LONG_MIN)
-			current_a->target_node = find_max(b);
+		if (best == NULL)
+			cur_a->target_node = find_max(b);
 		else
-			current_a->target_node = target_node;
-		current_a = current_a->next;
-	}
-}
-
-static void	cost_analysis_a(t_stack *a, t_stack *b)
-{
-	int		len_a;
-	int		len_b;
-	t_stack	*current_a;
-
-	current_a = a;
-	len_a = stack_len(current_a);
-	len_b = stack_len(b);
-	while (current_a)
-	{
-		current_a->push_cost = current_a->index;
-		if (!(current_a->above_median))
-			current_a->push_cost = len_a - (current_a->index);
-		if (current_a->target_node->above_median)
-			current_a->push_cost += current_a->target_node->index;
-		else
-			current_a->push_cost += len_b - (current_a->target_node->index);
-		current_a = current_a->next;
+			cur_a->target_node = best;
+		cur_a = cur_a->next;
 	}
 }
 
@@ -106,9 +83,12 @@ void	set_cheapest(t_stack *stack)
 
 void	init_nodes_a(t_stack *a, t_stack *b)
 {
+	long	best_val;
+
+	best_val = LONG_MIN;
 	current_index(a);
 	current_index(b);
-	set_target_a(a, b);
+	set_target_a(a, b, best_val);
 	cost_analysis_a(a, b);
 	set_cheapest(a);
 }

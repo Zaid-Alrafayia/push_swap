@@ -6,7 +6,7 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:30:49 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/15 11:05:32 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/15 23:07:56 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -97,7 +97,8 @@ void				prep_for_push(t_stack **stack, t_stack *node, int flag);
 t_stack				*get_cheapest(t_stack *stack);
 void				min_to_top(t_stack **a);
 void				print_stack(t_stack *stack);
-
+// cost.c
+void				cost_analysis_a(t_stack *a, t_stack *b);
 // init_b.c
 void				init_nodes_b(t_stack *a, t_stack *b);
 #endif // !PUSH_SWAP_H

@@ -32,7 +32,7 @@ void	min_to_top(t_stack **a)
 		return ;
 	while ((*a)->nbr != find_min(*a)->nbr)
 	{
-		if (find_min(*a))
+		if (find_min(*a)->above_median)
 			ra(a, 1);
 		else
 			rra(a, 1);
