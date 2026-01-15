@@ -6,7 +6,7 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 10:03:50 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/14 20:31:53 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:09:13 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../push_swap.h"
@@ -46,6 +46,8 @@ void	sort_3(t_stack **a)
 {
 	t_stack	*biggest;
 
+	if (!*a)
+		return ;
 	biggest = find_max(*a);
 	if (biggest == *a)
 		ra(a, false);
@@ -76,5 +78,5 @@ void	sort_stack(t_stack **a, t_stack **b)
 		move_b_to_a(a, b);
 	}
 	current_index(*a);
-	min_on_top(a);
+	min_to_top(a);
 }

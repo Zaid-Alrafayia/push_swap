@@ -6,7 +6,7 @@
 /*   By: zaalrafa <zaalrafa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 10:30:49 by zaalrafa          #+#    #+#             */
-/*   Updated: 2026/01/14 19:03:36 by zaalrafa         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:05:32 by zaalrafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -90,7 +90,14 @@ void				current_index(t_stack *s);
 void				init_nodes_a(t_stack *a, t_stack *b);
 void				set_cheapest(t_stack *stack);
 // move.c
+void				move_a_to_b(t_stack **a, t_stack **b);
+void				move_b_to_a(t_stack **a, t_stack **b);
+void				prep_for_push(t_stack **stack, t_stack *node, int flag);
+// functions.c
 t_stack				*get_cheapest(t_stack *stack);
-
+void				min_to_top(t_stack **a);
 void				print_content(void *content);
+
+// init_b.c
+void				init_nodes_b(t_stack *a, t_stack *b);
 #endif // !PUSH_SWAP_H
