@@ -50,11 +50,11 @@ void	sort_3(t_stack **a)
 		return ;
 	biggest = find_max(*a);
 	if (biggest == *a)
-		ra(a, false);
+		ra(a, 1);
 	else if ((*a)->next == biggest)
-		rra(a, false);
+		rra(a, 1);
 	if ((*a)->nbr > (*a)->next->nbr)
-		sa(a, false);
+		sa(a, 1);
 }
 
 void	sort_stack(t_stack **a, t_stack **b)
