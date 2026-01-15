@@ -79,5 +79,4 @@ void	sort_stack(t_stack **a, t_stack **b)
 	}
 	current_index(*a);
 	min_to_top(a);
-	print_stack(*a);
 }

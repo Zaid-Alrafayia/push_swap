@@ -36,7 +36,6 @@ void	min_to_top(t_stack **a)
 			ra(a, 1);
 		else
 			rra(a, 1);
-		*a = (*a)->next;
 	}
 }
 
