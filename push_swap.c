@@ -19,6 +19,8 @@ int	main(int argc, char *argv[])
 
 	a = NULL;
 	b = NULL;
+	if (!argv[1])
+		return (0);
 	init_stack(&a, argc, argv);
 	size_sort(&a, &b);
 	stack_clear(&a);

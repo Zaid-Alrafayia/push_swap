@@ -29,7 +29,8 @@ void	validate_chars(char **numbers, int split)
 		while (numbers[i][j])
 		{
 			if ((numbers[i][j] >= '0' && numbers[i][j] <= '9')
-				|| (numbers[i][j] == '-' && j == 0 && numbers[i][1]))
+				|| (numbers[i][j] == '-' && j == 0 && numbers[i][1])
+				|| (numbers[i][j] == '+' && j == 0 && numbers[i][1]))
 				j++;
 			else
 				split_error(numbers, split);

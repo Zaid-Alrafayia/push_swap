@@ -19,6 +19,12 @@ void	size_sort(t_stack **a, t_stack **b)
 	size = stack_len(*a);
 	if (size == 1)
 		return ;
+	else if (size == 2)
+	{
+		if (!stack_sorted(*a))
+			ra(a, 1);
+		return ;
+	}
 	sort_stack(a, b);
 }
 
