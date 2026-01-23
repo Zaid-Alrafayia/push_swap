@@ -71,6 +71,8 @@ int	main(int argc, char *argv[])
 
 	a = NULL;
 	b = NULL;
+	if (!argv[1])
+		return (0);
 	init_stack(&a, argc, argv);
 	x = read_move(&a, &b);
 	if (stack_sorted(a))

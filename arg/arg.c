@@ -47,11 +47,18 @@ char	**split_args(int argc, char **argv)
 
 	split = (argc == 2);
 	if (argc == 2)
+	{
 		numbers = ft_split(argv[1], ' ');
+		if (!numbers)
+			return (NULL);
+	}
 	else
 		numbers = argv + 1;
 	if (!numbers[0])
+	{
 		split_error(numbers, split);
+		return (NULL);
+	}
 	validate_chars(numbers, split);
 	check_args(numbers, argc);
 	return (numbers);

@@ -81,6 +81,8 @@ void	init_stack(t_stack **a, int argc, char **argv)
 
 	split = (argc == 2);
 	numbers = split_args(argc, argv);
+	if (!numbers)
+		return ;
 	original = numbers;
 	while (*numbers)
 	{
